@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nandaka Software Solutions - Empowering Businesses with Smart IT Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .corporate-gradient {
+            background: linear-gradient(135deg, #00C853 0%, #4CAF50 50%, #A5D6A7 100%);
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.6s ease;
+        }
+        
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.6s ease;
+        }
+        
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .service-card {
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 200, 83, 0.15);
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #00C853 0%, #4CAF50 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background: linear-gradient(135deg, #00E676 0%, #66BB6A 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 200, 83, 0.3);
+        }
+        
+        .benefit-icon {
+            background: linear-gradient(135deg, #00C853 0%, #4CAF50 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .benefit-icon:hover {
+            transform: scale(1.1);
+        }
+        
+        .mobile-menu {
+            display: none;
+        }
+        
+        .mobile-menu.active {
+            display: block;
+        }
+        
+        .counter {
+            font-variant-numeric: tabular-nums;
+        }
+        
+        .nav-glow {
+            box-shadow: 
+                0 4px 6px -1px rgba(0, 200, 83, 0.1),
+                0 2px 4px -1px rgba(0, 200, 83, 0.06),
+                0 0 0 1px rgba(0, 200, 83, 0.2),
+                0 0 20px rgba(0, 200, 83, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900">
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white nav-glow max-w-7xl mx-auto px-6 lg:px-8 rounded-b-2xl border-2 border-green-200">
+        <!-- Desktop Layout -->
+        <div class="hidden md:flex items-center justify-between h-16">
+            <div class="flex items-center flex-shrink-0">
+                <img src="https://i.ibb.co/HfsWN39N/Chat-GPT-Image-Oct-1-2025-07-33-37-PM.png" alt="Nandaka Software Solutions Logo" class="w-56 h-56 object-contain -my-20">
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <div class="ml-10 flex items-baseline space-x-8">
+                <a href="#about" class="text-gray-600 hover:text-green-600 px-3 py-2 text-sm font-medium transition-colors">About</a>
+                <a href="#services" class="text-gray-600 hover:text-green-600 px-3 py-2 text-sm font-medium transition-colors">Services</a>
+                <a href="#why-choose-us" class="text-gray-600 hover:text-green-600 px-3 py-2 text-sm font-medium transition-colors">Why Choose Us</a>
+                <a href="#contact" class="text-gray-600 hover:text-green-600 px-3 py-2 text-sm font-medium transition-colors">Contact</a>
+            </div>
+            
+            <!-- CTA Button -->
+            <div class="flex-shrink-0">
+                <a href="#contact" class="bg-green-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-green-700 transition-colors">Get Quote</a>
+            </div>
+        </div>
+        
+        <!-- Mobile Layout -->
+        <div class="md:hidden flex items-center justify-between py-4">
+            <div class="flex items-center">
+                <img src="https://i.ibb.co/HfsWN39N/Chat-GPT-Image-Oct-1-2025-07-33-37-PM.png" alt="Nandaka Software Solutions Logo" class="w-56 h-56 object-contain -my-20 -ml-8">
+            </div>
+            <!-- Mobile Menu Button -->
+            <button class="bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-2 rounded-lg shadow-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform hover:scale-105" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars text-lg"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="mobile-menu md:hidden bg-white border-t hidden">
+            <div class="px-4 py-2 space-y-2">
+                <a href="#about" class="block py-2 text-gray-700 hover:text-green-600 transition-colors" onclick="toggleMobileMenu()">About</a>
+                <a href="#services" class="block py-2 text-gray-700 hover:text-green-600 transition-colors" onclick="toggleMobileMenu()">Services</a>
+                <a href="#why-choose-us" class="block py-2 text-gray-700 hover:text-green-600 transition-colors" onclick="toggleMobileMenu()">Why Choose Us</a>
+                <a href="#contact" class="block py-2 text-gray-700 hover:text-green-600 transition-colors" onclick="toggleMobileMenu()">Contact</a>
+                <a href="#contact" class="w-full bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors mt-4 text-center block">
+                    Get Quote
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="corporate-gradient text-white py-20">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center fade-in-up">
+                <div>
+                    <h1 class="text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+                        Empowering Businesses with <span class="text-green-200">Smart IT Solutions</span>
+                    </h1>
+                    <p class="text-xl text-green-100 mb-8 leading-relaxed">
+                        We deliver cutting-edge IT services to help businesses thrive in the digital age. From managed services to cybersecurity, we're your trusted technology partner.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#contact" class="bg-white text-green-600 px-8 py-3 rounded-md font-semibold hover:bg-green-50 transition-colors inline-flex items-center justify-center">
+                            Schedule Consultation
+                        </a>
+                        <a href="#services" class="border-2 border-white text-white px-8 py-3 rounded-md font-semibold hover:bg-white hover:text-green-600 transition-colors inline-flex items-center justify-center">
+                            Our Services
+                        </a>
+                    </div>
+                </div>
+                <div class="slide-in-right">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8">
+                        <div class="grid grid-cols-2 gap-6 text-center">
+                            <div>
+                                <div class="text-3xl font-bold text-white counter" data-target="500">0</div>
+                                <div class="text-green-100 text-sm">Projects Completed</div>
+                            </div>
+                            <div>
+                                <div class="text-3xl font-bold text-white counter" data-target="98">0</div>
+                                <div class="text-green-100 text-sm">Client Satisfaction %</div>
+                            </div>
+                            <div>
+                                <div class="text-3xl font-bold text-white counter" data-target="24">0</div>
+                                <div class="text-green-100 text-sm">Hours Support</div>
+                            </div>
+                            <div>
+                                <div class="text-3xl font-bold text-white counter" data-target="15">0</div>
+                                <div class="text-green-100 text-sm">Years Experience</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gradient-to-br from-green-50 to-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-4xl font-bold text-gray-900 mb-6">About Nandaka Software Solutions</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Your reliable partner for comprehensive IT services. We combine expertise, innovation, and customer success to deliver technology solutions that drive business growth.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="slide-in-left">
+                    <div class="bg-white rounded-2xl p-8 shadow-lg">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6">Our Mission</h3>
+                        <p class="text-gray-600 mb-6">
+                            To empower businesses with cutting-edge technology solutions that enhance productivity, security, and growth. We believe technology should be an enabler, not a barrier.
+                        </p>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-check text-green-600"></i>
+                                </div>
+                                <span class="text-gray-700">15+ years of industry experience</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-check text-green-600"></i>
+                                </div>
+                                <span class="text-gray-700">Certified IT professionals</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-check text-green-600"></i>
+                                </div>
+                                <span class="text-gray-700">24/7 proactive support</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-in-right">
+                    <div class="bg-gradient-to-br from-green-100 to-green-200 rounded-2xl p-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6">Why We're Different</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-lightbulb text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900 mb-2">Innovation First</h4>
+                                    <p class="text-gray-700">We stay ahead of technology trends to deliver future-ready solutions.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-shield-alt text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900 mb-2">Security Focused</h4>
+                                    <p class="text-gray-700">Enterprise-grade security measures protect your business data and systems.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-users text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900 mb-2">Customer Success</h4>
+                                    <p class="text-gray-700">Your success is our success. We're committed to your long-term growth.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-4xl font-bold text-gray-900 mb-6">Our IT Services</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Comprehensive technology solutions designed to keep your business running smoothly, securely, and efficiently.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="service-card bg-white p-8 rounded-xl shadow-lg border border-green-100 hover:border-green-200">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-server text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Managed IT Services</h3>
+                    <p class="text-gray-600 mb-6">
+                        Comprehensive IT management including monitoring, maintenance, and support to keep your systems running optimally.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-600 mr-2"></i>
+                            24/7 system monitoring
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-600 mr-2"></i>
+                            Proactive maintenance
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-600 mr-2"></i>
+                            Help desk support
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="service-card bg-white p-8 rounded-xl shadow-lg border border-green-100 hover:border-green-200">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-cloud text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Cloud Services</h3>
+                    <p class="text-gray-600 mb-6">
+                        Migrate to the cloud with confidence. We provide secure, scalable cloud solutions tailored to your business needs.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-600 mr-2"></i>
+                            Cloud migration
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-600 mr-2"></i>
+                            Multi-cloud strategy
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-600 mr-2"></i>
+                            Cost optimization
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="service-card bg-white p-8 rounded-xl shadow-lg border border-green-100 hover:border-green-200">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-shield-alt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Cybersecurity Services</h3>
+                    <p class="text-gray-600 mb-6">
+                        Protect your business from cyber threats with our comprehensive security solutions and expert guidance.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-600 mr-2"></i>
+                            Security assessments
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-600 mr-2"></i>
+                            Threat monitoring
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-600 mr-2"></i>
+                            Incident response
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="service-card bg-white p-8 rounded-xl shadow-lg border border-green-100 hover:border-green-200">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-network-wired text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Network Design & Implementation</h3>
+                    <p class="text-gray-600 mb-6">
+                        Build robust, scalable network infrastructure that supports your business growth and connectivity needs.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-600 mr-2"></i>
+                            Network planning
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-600 mr-2"></i>
+                            Infrastructure setup
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-600 mr-2"></i>
+                            Performance optimization
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="service-card bg-white p-8 rounded-xl shadow-lg border border-green-100 hover:border-green-200">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-database text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Data Backup & Recovery</h3>
+                    <p class="text-gray-600 mb-6">
+                        Ensure business continuity with reliable backup solutions and rapid disaster recovery capabilities.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-600 mr-2"></i>
+                            Automated backups
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-600 mr-2"></i>
+                            Offsite storage
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-600 mr-2"></i>
+                            Quick recovery
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="service-card bg-white p-8 rounded-xl shadow-lg border border-green-100 hover:border-green-200">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-user-tie text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">IT Consulting Services</h3>
+                    <p class="text-gray-600 mb-6">
+                        Strategic IT guidance to align technology with business goals and drive digital transformation.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-600 mr-2"></i>
+                            Technology strategy
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-600 mr-2"></i>
+                            Digital transformation
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-600 mr-2"></i>
+                            Vendor management
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- CTA after services -->
+            <div class="text-center mt-16 fade-in-up">
+                <a href="#contact" class="cta-button text-white px-8 py-4 rounded-lg font-semibold text-lg inline-flex items-center">
+                    Learn More About Our Services
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section id="why-choose-us" class="py-20 bg-gradient-to-br from-green-50 to-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-4xl font-bold text-gray-900 mb-6">Why Choose Nandaka Software Solutions?</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    We deliver exceptional value through our unique combination of expertise, innovation, and commitment to your success.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center fade-in-up">
+                    <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mx-auto mb-6 benefit-icon">
+                        <i class="fas fa-rocket text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Fast Delivery</h3>
+                    <p class="text-gray-600">
+                        We understand time is money. Our streamlined processes ensure rapid project completion without compromising quality.
+                    </p>
+                </div>
+                
+                <div class="text-center fade-in-up">
+                    <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mx-auto mb-6 benefit-icon">
+                        <i class="fas fa-lightbulb text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Innovation First</h3>
+                    <p class="text-gray-600">
+                        We stay ahead of the curve with cutting-edge technologies and innovative solutions that give you a competitive edge.
+                    </p>
+                </div>
+                
+                <div class="text-center fade-in-up">
+                    <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mx-auto mb-6 benefit-icon">
+                        <i class="fas fa-chart-line text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Proven Results</h3>
+                    <p class="text-gray-600">
+                        Our track record speaks for itself. We've helped hundreds of businesses achieve their goals and exceed expectations.
+                    </p>
+                </div>
+                
+                <div class="text-center fade-in-up">
+                    <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mx-auto mb-6 benefit-icon">
+                        <i class="fas fa-headset text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Proactive Support</h3>
+                    <p class="text-gray-600">
+                        Our 24/7 support team monitors your systems and prevents issues before they impact your business operations.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- CTA after why choose us -->
+            <div class="text-center mt-16 fade-in-up">
+                <a href="#contact" class="cta-button text-white px-8 py-4 rounded-lg font-semibold text-lg inline-flex items-center">
+                    Get a Free Quote
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-4xl font-bold text-gray-900 mb-6">What Our Clients Say</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Real testimonials from businesses that trust Nandaka Software Solutions for their IT needs.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-xl shadow-lg fade-in-up">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=60&h=60&fit=crop&crop=face" alt="Sarah Johnson" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold text-gray-900">Sarah Johnson</h4>
+                            <p class="text-sm text-green-600">CEO, TechStart Inc.</p>
+                        </div>
+                    </div>
+                    <div class="flex text-yellow-500 mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-700">"Nandaka Software Solutions transformed our IT infrastructure. Their managed services have reduced our downtime by 90% and significantly improved our productivity. Highly recommended!"</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-xl shadow-lg fade-in-up">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face" alt="Michael Chen" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold text-gray-900">Michael Chen</h4>
+                            <p class="text-sm text-green-600">CTO, DataFlow Systems</p>
+                        </div>
+                    </div>
+                    <div class="flex text-yellow-500 mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-700">"The cybersecurity services provided by Nandaka are exceptional. Their proactive approach and 24/7 monitoring give us peace of mind knowing our data is secure."</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-xl shadow-lg fade-in-up">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=60&h=60&fit=crop&crop=face" alt="Emily Rodriguez" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold text-gray-900">Emily Rodriguez</h4>
+                            <p class="text-sm text-green-600">Operations Manager, GrowthCorp</p>
+                        </div>
+                    </div>
+                    <div class="flex text-yellow-500 mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-700">"Their cloud migration services were seamless. We moved to the cloud with zero downtime and saw immediate improvements in performance and cost savings."</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-xl shadow-lg fade-in-up">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=60&h=60&fit=crop&crop=face" alt="David Thompson" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold text-gray-900">David Thompson</h4>
+                            <p class="text-sm text-green-600">IT Director, FinanceFirst</p>
+                        </div>
+                    </div>
+                    <div class="flex text-yellow-500 mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-700">"Nandaka's network design and implementation exceeded our expectations. Our network performance improved dramatically, and their support team is always available when we need them."</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-xl shadow-lg fade-in-up">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=60&h=60&fit=crop&crop=face" alt="Lisa Wang" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold text-gray-900">Lisa Wang</h4>
+                            <p class="text-sm text-green-600">Founder, InnovateTech</p>
+                        </div>
+                    </div>
+                    <div class="flex text-yellow-500 mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-700">"Their IT consulting helped us align our technology with our business goals. The strategic guidance and implementation were exactly what we needed to scale efficiently."</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-xl shadow-lg fade-in-up">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=60&h=60&fit=crop&crop=face" alt="James Martinez" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold text-gray-900">James Martinez</h4>
+                            <p class="text-sm text-green-600">CEO, SecureData Corp</p>
+                        </div>
+                    </div>
+                    <div class="flex text-yellow-500 mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-700">"The backup and recovery solutions provided by Nandaka saved us from a potential disaster. Their rapid response and expertise in data recovery are unmatched."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-gradient-to-br from-green-50 to-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-4xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Everything you need to know about our IT services and solutions.
+                </p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto space-y-4">
+                <div class="bg-white rounded-xl shadow-lg border border-green-100 fade-in-up">
+                    <button class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none hover:bg-green-50 transition-colors" onclick="toggleFAQ(1)">
+                        <span class="text-lg font-semibold text-green-600">What IT services do you offer?</span>
+                        <i class="fas fa-chevron-down text-green-600 transform transition-transform duration-200" id="faq-icon-1"></i>
+                    </button>
+                    <div class="px-6 pb-4 text-gray-700 hidden" id="faq-answer-1">
+                        <p>We offer comprehensive IT services including managed IT services, cloud migration, cybersecurity, network design and implementation, data backup and recovery, and strategic IT consulting. Our services are tailored to meet your specific business needs.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg border border-green-100 fade-in-up">
+                    <button class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none hover:bg-green-50 transition-colors" onclick="toggleFAQ(2)">
+                        <span class="text-lg font-semibold text-green-600">How quickly can you respond to IT issues?</span>
+                        <i class="fas fa-chevron-down text-green-600 transform transition-transform duration-200" id="faq-icon-2"></i>
+                    </button>
+                    <div class="px-6 pb-4 text-gray-700 hidden" id="faq-answer-2">
+                        <p>We provide 24/7 support for critical issues with immediate response. For non-critical issues, we typically respond within 2-4 hours during business hours. Our proactive monitoring helps prevent issues before they impact your business.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg border border-green-100 fade-in-up">
+                    <button class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none hover:bg-green-50 transition-colors" onclick="toggleFAQ(3)">
+                        <span class="text-lg font-semibold text-green-600">Do you work with small businesses?</span>
+                        <i class="fas fa-chevron-down text-green-600 transform transition-transform duration-200" id="faq-icon-3"></i>
+                    </button>
+                    <div class="px-6 pb-4 text-gray-700 hidden" id="faq-answer-3">
+                        <p>Absolutely! We work with businesses of all sizes, from startups to large enterprises. Our solutions are scalable and can be customized to fit your budget and requirements, regardless of your company size.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg border border-green-100 fade-in-up">
+                    <button class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none hover:bg-green-50 transition-colors" onclick="toggleFAQ(4)">
+                        <span class="text-lg font-semibold text-green-600">What is your pricing model?</span>
+                        <i class="fas fa-chevron-down text-green-600 transform transition-transform duration-200" id="faq-icon-4"></i>
+                    </button>
+                    <div class="px-6 pb-4 text-gray-700 hidden" id="faq-answer-4">
+                        <p>We offer flexible pricing models including monthly managed service plans, project-based pricing, and customized solutions. Contact us for a free consultation and quote tailored to your specific needs and budget.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg border border-green-100 fade-in-up">
+                    <button class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none hover:bg-green-50 transition-colors" onclick="toggleFAQ(5)">
+                        <span class="text-lg font-semibold text-green-600">Do you provide cybersecurity services?</span>
+                        <i class="fas fa-chevron-down text-green-600 transform transition-transform duration-200" id="faq-icon-5"></i>
+                    </button>
+                    <div class="px-6 pb-4 text-gray-700 hidden" id="faq-answer-5">
+                        <p>Yes, cybersecurity is one of our core services. We provide comprehensive security assessments, threat monitoring, incident response, security training, and ongoing protection to keep your business safe from cyber threats.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg border border-green-100 fade-in-up">
+                    <button class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none hover:bg-green-50 transition-colors" onclick="toggleFAQ(6)">
+                        <span class="text-lg font-semibold text-green-600">Can you help with cloud migration?</span>
+                        <i class="fas fa-chevron-down text-green-600 transform transition-transform duration-200" id="faq-icon-6"></i>
+                    </button>
+                    <div class="px-6 pb-4 text-gray-700 hidden" id="faq-answer-6">
+                        <p>Absolutely! We specialize in cloud migration services, helping businesses move to the cloud safely and efficiently. We handle everything from planning and assessment to implementation and optimization, ensuring minimal downtime and maximum benefits.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-4xl font-bold text-gray-900 mb-6">Get Started Today</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Ready to transform your IT infrastructure? Contact us for a free consultation and discover how we can help your business thrive.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <!-- Contact Form -->
+                <div class="slide-in-left">
+                    <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6">Request a Consultation</h3>
+                        <form class="space-y-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                                <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="Your full name">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                                <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="your.email@company.com">
+                            </div>
+                            <div>
+                                <label for="company" class="block text-sm font-medium text-gray-700 mb-2">Company</label>
+                                <input type="text" id="company" name="company" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="Your company name">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                                <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="Tell us about your IT needs..."></textarea>
+                            </div>
+                            <button type="submit" class="w-full cta-button text-white py-4 rounded-lg font-semibold text-lg">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Contact Information -->
+                <div class="slide-in-right">
+                    <div class="space-y-8">
+                        <div class="bg-white p-8 rounded-2xl shadow-lg border border-green-100">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fas fa-phone text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Phone</h4>
+                                    <p class="text-green-600 font-medium">07448 956696</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white p-8 rounded-2xl shadow-lg border border-green-100">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fas fa-envelope text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Email</h4>
+                                    <p class="text-green-600 font-medium">hr@nandakasoft.com</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white p-8 rounded-2xl shadow-lg border border-green-100">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fas fa-map-marker-alt text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Address</h4>
+                                    <p class="text-gray-600">9 Stammergate Court<br>Ripon, HG4 1NB<br>United Kingdom</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gradient-to-br from-green-500 to-green-600 p-8 rounded-2xl text-white">
+                            <h4 class="font-bold text-xl mb-4">Join Our Happy Customers</h4>
+                            <p class="mb-6">Experience the difference that professional IT services can make for your business. Let's discuss your technology needs today.</p>
+                            <a href="tel:+447448956696" class="bg-white text-green-600 px-6 py-3 rounded-lg font-semibold hover:bg-green-50 transition-colors inline-flex items-center">
+                                Call Now: 07448 956696
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                <div>
+                <div class="flex items-center mb-4">
+                    <img src="https://i.ibb.co/HfsWN39N/Chat-GPT-Image-Oct-1-2025-07-33-37-PM.png" alt="Nandaka Software Solutions Logo" class="w-16 h-16 object-contain mr-4">
+                </div>
+                    <p class="text-gray-400 mb-4">
+                        Your trusted partner for comprehensive IT solutions. We help businesses thrive with expert technology guidance and professional services.
+                    </p>
+                    <div class="space-y-2 text-sm text-gray-400">
+                        <p>Phone: 07448 956696</p>
+                        <p>Email: hr@nandakasoft.com</p>
+                        <p>Address: 9 Stammergate Court, Ripon, HG4 1NB, UK</p>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4">Quick Links</h3>
+                    <div class="space-y-2">
+                        <a href="#about" class="text-gray-400 hover:text-white transition-colors block">About Us</a>
+                        <a href="#services" class="text-gray-400 hover:text-white transition-colors block">Our Services</a>
+                        <a href="#why-choose-us" class="text-gray-400 hover:text-white transition-colors block">Why Choose Us</a>
+                        <a href="#contact" class="text-gray-400 hover:text-white transition-colors block">Contact</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4">Our Services</h3>
+                    <div class="space-y-2">
+                        <a href="#services" class="text-gray-400 hover:text-white transition-colors block">Managed IT Services</a>
+                        <a href="#services" class="text-gray-400 hover:text-white transition-colors block">Cloud Services</a>
+                        <a href="#services" class="text-gray-400 hover:text-white transition-colors block">Cybersecurity</a>
+                        <a href="#services" class="text-gray-400 hover:text-white transition-colors block">Network Design</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4">Contact Info</h3>
+                    <div class="space-y-2 text-gray-400">
+                        <p>Phone: 07448 956696</p>
+                        <p>Email: hr@nandakasoft.com</p>
+                        <p>Address: 9 Stammergate Court</p>
+                        <p>Ripon, HG4 1NB, United Kingdom</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Nandaka Software Solutions. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        function toggleMobileMenu() {
+            const menu = document.querySelector('.mobile-menu');
+            menu.classList.toggle('active');
+        }
+
+        // FAQ toggle functionality
+        function toggleFAQ(faqNumber) {
+            const answer = document.getElementById(`faq-answer-${faqNumber}`);
+            const icon = document.getElementById(`faq-icon-${faqNumber}`);
+            
+            if (answer.classList.contains('hidden')) {
+                answer.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                answer.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in, .fade-in-up, .slide-in-left, .slide-in-right').forEach(el => {
+            fadeObserver.observe(el);
+        });
+
+        // Counter animation
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    const duration = 2000;
+                    const increment = target / (duration / 16);
+                    let current = 0;
+                    
+                    const updateCounter = () => {
+                        if (current < target) {
+                            current += increment;
+                            counter.textContent = Math.floor(current);
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            counter.textContent = target;
+                        }
+                    };
+                    
+                    updateCounter();
+                    counterObserver.unobserve(counter);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.counter').forEach(counter => {
+            counterObserver.observe(counter);
+        });
+
+        // Form submission
+        const form = document.querySelector('form');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form data
+                const formData = new FormData(form);
+                const name = formData.get('name');
+                const email = formData.get('email');
+                const company = formData.get('company');
+                const message = formData.get('message');
+                
+                // Simple validation
+                if (!name || !email || !message) {
+                    alert('Please fill in all required fields.');
+                    return;
+                }
+                
+                // Simulate form submission
+                const submitButton = form.querySelector('button[type="submit"]');
+                const originalText = submitButton.textContent;
+                submitButton.textContent = 'Sending...';
+                submitButton.disabled = true;
+                
+                setTimeout(() => {
+                    alert('Thank you for your message! We\'ll get back to you within 24 hours.');
+                    form.reset();
+                    submitButton.textContent = originalText;
+                    submitButton.disabled = false;
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
